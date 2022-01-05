@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   project.c                                          :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjensen <tjensen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tomkrueger <tomkrueger@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/27 21:27:42 by tjensen           #+#    #+#             */
-/*   Updated: 2021/10/28 00:36:00 by tjensen          ###   ########.fr       */
+/*   Created: 2021/12/29 00:11:34 by tomkrueger        #+#    #+#             */
+/*   Updated: 2021/12/29 01:39:48 by tomkrueger       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "project.h"
+/* #include "../inc/minitalk.h" */
+#include <stdio.h>
+#include <unistd.h>
 
 int	main(void)
 {
-	write(1, "Sample C project structure\n", 27);
+	printf("%i\n", getpid());
+	
 	return (0);
 }
