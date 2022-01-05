@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomkrueger <tomkrueger@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tkruger <tkruger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 21:27:45 by tjensen           #+#    #+#             */
-/*   Updated: 2021/12/29 00:36:34 by tomkrueger       ###   ########.fr       */
+/*   Updated: 2022/01/06 00:36:32 by tkruger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define MINITALK_H
 
 # include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <signal.h>
 
-# include "ft_printf.h"
+//# include "ft_printf.h"
 
 /* ************************************************************************** */
 /* FUNCTION PROTOTYPES														  */

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tomkrueger <tomkrueger@student.42.fr>      +#+  +:+       +#+         #
+#    By: tkruger <tkruger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 22:03:08 by tjensen           #+#    #+#              #
-#    Updated: 2021/12/29 01:53:04 by tomkrueger       ###   ########.fr        #
+#    Updated: 2022/01/06 00:33:11 by tkruger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,15 +35,15 @@ LIB			:= lib/libftprintf.a
 #	RULES																	   #
 # **************************************************************************** #
 
-.PHONY: all libmake $(SERVER) $(CLIENT) clean fclean re debug
+.PHONY: all libmake server client clean fclean re debug
 
 all: libmake server client
 
 server: 
-	$(CC) $(CFLAGS) -o $(SERVER) $(SSRCS) $(LIB) $(INC)
+	$(CC) $(CFLAGS) -o $(SERVER) $(SSRCS)
 
 client: 
-	$(CC) $(CFLAGS) -o $(CLIENT) $(CSRCS) $(LIB) $(INC)
+	$(CC) $(CFLAGS) -o $(CLIENT) $(CSRCS)
 
 libmake:
 	@make -C $(LIBDIRS) all
