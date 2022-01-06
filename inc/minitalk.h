@@ -6,7 +6,7 @@
 /*   By: tkruger <tkruger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 21:27:45 by tjensen           #+#    #+#             */
-/*   Updated: 2022/01/06 00:36:32 by tkruger          ###   ########.fr       */
+/*   Updated: 2022/01/06 00:55:55 by tkruger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 # define MINITALK_H
 
 # include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
 # include <signal.h>
 
-//# include "ft_printf.h"
+# include "../lib/ft_printf/includes/ft_printf.h"
 
 /* ************************************************************************** */
-/* FUNCTION PROTOTYPES														  */
+/* STRUCTS																	  */
 /* ************************************************************************** */
+
+typedef struct s_received
+{
+	char	c;
+	int		pos;
+}			t_received;
 
 #endif

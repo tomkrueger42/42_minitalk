@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkruger <tkruger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/29 00:11:29 by tomkrueger        #+#    #+#             */
-/*   Updated: 2022/01/06 00:29:12 by tkruger          ###   ########.fr       */
+/*   Created: 2021/12/29 00:11:29 by tkruger           #+#    #+#             */
+/*   Updated: 2022/01/06 02:00:14 by tkruger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_atoi(const char *a)
 {
-	int r;
+	int	r;
 
 	r = 0;
 	while (*a >= '0' && *a <= '9')
@@ -37,7 +37,7 @@ void	encode(char c, int server_pid)
 		{
 			if (kill(server_pid, SIGUSR1) == -1)
 			{
-				write(1, "wrong pid\n", 10);
+				ft_printf("wrong pid\n");
 				exit(1);
 			}
 		}
@@ -45,7 +45,7 @@ void	encode(char c, int server_pid)
 		{
 			if (kill(server_pid, SIGUSR2) == -1)
 			{
-				write(1, "wrong pid\n", 10);
+				ft_printf("wrong pid\n");
 				exit(1);
 			}
 			c -= i;
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	i = 0;
 	if (argc != 3)
 	{
-		write(1, "expected arguments: ./client <server_pid> <message>\n", 52);
+		ft_printf("expected arguments: ./client <server_pid> <message>\n");
 		exit(1);
 	}
 	while (argv[2][i] != 0)
@@ -71,6 +71,5 @@ int	main(int argc, char **argv)
 		encode(argv[2][i], server_pid);
 		i++;
 	}
-	system("leaks client");
 	return (0);
 }

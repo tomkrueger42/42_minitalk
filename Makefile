@@ -6,7 +6,7 @@
 #    By: tkruger <tkruger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 22:03:08 by tjensen           #+#    #+#              #
-#    Updated: 2022/01/06 00:33:11 by tkruger          ###   ########.fr        #
+#    Updated: 2022/01/06 00:48:59 by tkruger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ CSRCS		:= src/client.c
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
 
-FT_PRINTF	:= cd lib/ft_printf && make
-LIB			:= lib/libftprintf.a
+LIBDIR		:= lib/ft_printf
+FT_PRINTF	:= libftprintf.a
 
 
 # **************************************************************************** #
@@ -40,22 +40,21 @@ LIB			:= lib/libftprintf.a
 all: libmake server client
 
 server: 
-	$(CC) $(CFLAGS) -o $(SERVER) $(SSRCS)
+	$(CC) $(CFLAGS) -o $(SERVER) $(SSRCS) $(LIBDIR)/$(FT_PRINTF)
 
 client: 
-	$(CC) $(CFLAGS) -o $(CLIENT) $(CSRCS)
+	$(CC) $(CFLAGS) -o $(CLIENT) $(CSRCS) $(LIBDIR)/$(FT_PRINTF)
 
 libmake:
-	@make -C $(LIBDIRS) all
-	@make -C $(LIBDIRS) clean
+	@make -C $(LIBDIR) all
 
 clean:
 	@rm -f *.o *~
-	@make -C $(LIBDIRS) clean
+	@make -C $(LIBDIR) clean
 
 fclean:	clean
 	@rm -f $(CLIENT)
 	@rm -f $(SERVER)
-	@rm -f $(LIBDIRS)/ft_printf.a
+	@rm -f $(LIBDIR)/libftprintf.a
 
 re:	fclean all

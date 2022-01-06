@@ -5,53 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkruger <tkruger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/29 00:11:34 by tomkrueger        #+#    #+#             */
-/*   Updated: 2022/01/06 00:37:11 by tkruger          ###   ########.fr       */
+/*   Created: 2022/01/06 01:05:38 by tkruger           #+#    #+#             */
+/*   Updated: 2022/01/06 01:08:27 by tkruger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minitalk.h"
 
-int		pos = 0;
-char	c;
+struct s_received	g_received;
 
-void sigusr1_handler()
+void	sigusr1_handler(int a)
 {
-	pos++;
+	g_received.pos++;
+	a = 1;
 }
 
-void sigusr2_handler()
+void	sigusr2_handler(int a)
 {
 	int	value;
 	int	count;
 
 	value = 128;
 	count = 0;
-	while (count++ < pos)
+	while (count++ < g_received.pos)
 	{
 		value = value >> 1;
 	}
-	c += value;
-	pos++;
+	g_received.c += value;
+	g_received.pos++;
+	a = 1;
 }
 
 int	main(void)
 {
-	printf("%i\n", getpid());
+	ft_printf("%i\n", getpid());
 	while (1)
 	{
-		if (pos == 8)
+		if (g_received.pos == 8)
 		{
-			write(1, &c, 1);
-			c = 0;
-			pos = 0;
+			write(1, &g_received.c, 1);
+			g_received.c = 0;
+			g_received.pos = 0;
 		}
 		signal(SIGUSR1, sigusr1_handler);
-		if (pos == 8)
+		if (g_received.pos == 8)
 		{
-			write(1, &c, 1);
-			c = 0;
-			pos = 0;
+			write(1, &g_received.c, 1);
+			g_received.c = 0;
+			g_received.pos = 0;
 		}
 		signal(SIGUSR2, sigusr2_handler);
 	}
