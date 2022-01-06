@@ -6,7 +6,7 @@
 #    By: tkruger <tkruger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 22:03:08 by tjensen           #+#    #+#              #
-#    Updated: 2022/01/06 00:48:59 by tkruger          ###   ########.fr        #
+#    Updated: 2022/01/06 02:04:44 by tkruger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 #	Project specific														   #
 # **************************************************************************** #
 
+NAME		:= minitalk
 SERVER		:= server
 CLIENT		:= client
 
@@ -37,7 +38,9 @@ FT_PRINTF	:= libftprintf.a
 
 .PHONY: all libmake server client clean fclean re debug
 
-all: libmake server client
+$(NAME): libmake server client
+
+all: $(NAME)
 
 server: 
 	$(CC) $(CFLAGS) -o $(SERVER) $(SSRCS) $(LIBDIR)/$(FT_PRINTF)
