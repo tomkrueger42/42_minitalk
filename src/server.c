@@ -6,7 +6,7 @@
 /*   By: tkruger <tkruger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 01:05:38 by tkruger           #+#    #+#             */
-/*   Updated: 2022/01/06 01:08:27 by tkruger          ###   ########.fr       */
+/*   Updated: 2022/02/21 13:20:03 by tkruger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 struct s_received	g_received;
 
-void	sigusr1_handler(int a)
+void	sigusr1_handler(__unused int a)
 {
 	g_received.pos++;
-	a = 1;
 }
 
-void	sigusr2_handler(int a)
+void	sigusr2_handler(__unused int a)
 {
 	int	value;
 	int	count;
@@ -33,7 +32,6 @@ void	sigusr2_handler(int a)
 	}
 	g_received.c += value;
 	g_received.pos++;
-	a = 1;
 }
 
 int	main(void)
